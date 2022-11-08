@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import productsData from "./data/productData.json";
+import { addToCard } from "./redux/action/cardAction";
 
 const App = () => {
-  // const { selectedProduct } = useSelector((state) => state.busLists);
-  // const dispatch = useDispatch();
-  // dispatch(addToCard([...selectedProduct, product]));
+  const { selectProduct } = useSelector((state) => state.busLists);
+  const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [sum, setSum] = useState(0);
-  console.log("selectedProduct", selectedProduct);
+
+  useEffect(() => {
+    dispatch(addToCard(selectedProduct));
+  }, [selectedProduct]);
 
   const handleProductAdd = (product) => {
     const productList = [...selectedProduct];
@@ -39,12 +43,11 @@ const App = () => {
 
   useEffect(() => {
     let total = 0;
-    for (var i = 0; i < selectedProduct.length; i++) {
-      total +=
-        Number(selectedProduct[i].price) * Number(selectedProduct[i].qty);
+    for (var i = 0; i < selectProduct?.length; i++) {
+      total += Number(selectProduct[i]?.price) * Number(selectProduct[i]?.qty);
     }
     setSum(total);
-  }, [selectedProduct]);
+  }, [selectProduct]);
 
   return (
     <div className="App">

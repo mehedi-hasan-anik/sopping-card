@@ -3,7 +3,7 @@ const cardReducer = (state = [], action) => {
     case "ADD_TO_CARD": {
       const newState = {
         ...state,
-        selectedProduct: action.payload,
+        selectProduct: action.payload,
       };
       return newState;
     }
