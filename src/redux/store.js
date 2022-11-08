@@ -1,12 +1,12 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import busLists from "./reducers/cardReducer";
+import cardList from "./reducers/cardReducer";
 
 const middleware = applyMiddleware(thunk);
 
 const combinedReducer = combineReducers({
-  busLists,
+  cardList,
 });
 
 export const store = createStore(

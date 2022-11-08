@@ -5,7 +5,7 @@ import productsData from "./data/productData.json";
 import { addToCard } from "./redux/action/cardAction";
 
 const App = () => {
-  const { selectProduct } = useSelector((state) => state.busLists);
+  const { selectProduct } = useSelector((state) => state.cardList);
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [sum, setSum] = useState(0);
@@ -53,8 +53,8 @@ const App = () => {
     <div className="App">
       <div className="homePage">
         <div className="products">
-          {productsData?.map((product) => (
-            <div className="singleProduct">
+          {productsData?.map((product, index) => (
+            <div className="singleProduct" key={index}>
               <h4>{product?.name}</h4>
               <p>Price:{product?.price}</p>
               <button onClick={() => handleProductAdd(product)}>
@@ -65,8 +65,8 @@ const App = () => {
         </div>
         <div className="selectedProducts">
           <h3>selected products</h3>
-          {selectedProduct?.map((product) => (
-            <div className="product">
+          {selectProduct?.map((product, index) => (
+            <div className="product" key={index}>
               <h4>{product?.name}</h4>
               <p>Price:{product?.price}</p>
               <button
