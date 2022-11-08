@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "tv",
+    "price": 100,
+    "qty": 0,
+    "max": 2
+  },
+  {
+    "id": 2,
+    "name": "mobile",
+    "price": 200,
+    "qty": 0,
+    "max": 2
+  },
+  {
+    "id": 3,
+    "name": "laptop",
+    "price": 300,
+    "qty": 0,
+    "max": 2
+  }
+]
